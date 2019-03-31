@@ -8,9 +8,13 @@ class Stack
 private:
 	struct Item
 	{
-		T data;
+		T* data;
 		Item* next = nullptr;
-	}* top;
+		~Item()
+		{
+			delete data;
+		}
+	} *top;
 	unsigned int size;
 public:
 	Stack();
@@ -19,6 +23,7 @@ public:
 	void Pop();
 	T Peek() const;
 	void Show() const;
+	unsigned int GetSize() const;
 };
 
 template<typename T>
@@ -31,14 +36,20 @@ Stack<T>::Stack()
 template<typename T>
 Stack<T>::~Stack()
 {
-	delete this->top;
+	Item* next = nullptr;
+	Item* temp = this->top;
+	while (temp != nullptr) {
+		next = temp->next;
+		delete temp;
+		temp = next;
+	}
 }
 
 template<typename T>
 void Stack<T>::Push(T data)
 {
 	Item* temp = new Item;
-	temp->data = data;
+	temp->data = new T(data);
 	temp->next = this->top;
 	this->top = temp;
 	this->size++;
@@ -58,7 +69,7 @@ template<typename T>
 T Stack<T>::Peek() const
 {
 	if (!size) throw std::exception("Stack underflow.");
-	return this->top->data;
+	return *(this->top->data);
 }
 
 template<typename T> 
@@ -70,4 +81,10 @@ void Stack<T>::Show() const
 		std::cout << ++k << ". " << temp->data << std::endl;
 		temp = temp->next;
 	}
+}
+
+template<typename T>
+inline unsigned int Stack<T>::GetSize() const
+{
+	return this->size;
 }
