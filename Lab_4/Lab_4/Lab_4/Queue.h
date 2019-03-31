@@ -21,7 +21,6 @@ public:
 	~Queue();
 	void Enqueue(T data);
 	void Dequeue();
-	//Item* GetHead() const;
 	T Peek() const;
 	unsigned int GetSize() const;
 	bool IsEmpty() const;
