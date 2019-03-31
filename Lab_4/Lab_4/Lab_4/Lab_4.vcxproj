@@ -118,6 +118,7 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractData.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
   </ItemGroup>

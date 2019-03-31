@@ -3,6 +3,7 @@
 #include "Stack.h"
 #include "Queue.h"
 
+
 int main()
 {
 	try {
@@ -22,6 +23,7 @@ int main()
 		std::cout << queue->Peek() << std::endl;
 		queue->Dequeue();
 		std::cout << queue->Peek() << std::endl;
+		queue->Show();
 		delete queue;
 
 	} catch (std::exception& e) {

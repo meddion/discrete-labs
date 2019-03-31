@@ -1,42 +1,31 @@
 #pragma once
 #include <iostream>
 #include <exception>
+#include "AbstractData.h"
 
 template <typename T>
-class Queue
+class Queue : public AbstractData<T>
 {
-private:
-	struct Item
-	{
-		T* data;
-		Item* next = nullptr;
-		~Item()
-		{
-			delete data;
-		}
-	} *list;
-	unsigned int size;
 public:
+	typedef AbstractData<T>::Item Item;
 	Queue();
 	~Queue();
 	void Enqueue(T data);
 	void Dequeue();
-	//Item* GetHead() const;
-	T Peek() const;
-	unsigned int GetSize() const;
-	bool IsEmpty() const;
 };
 
 template<typename T>
 Queue<T>::Queue()
 {
-	list = nullptr;
-	size = 0;
+	this->list = nullptr;
+	this->size = 0;
 }
 
 template<typename T>
 Queue<T>::~Queue()
 {
+	while (!this->IsEmpty())
+		this->Dequeue();
 }
 
 template<typename T>
@@ -64,23 +53,4 @@ void Queue<T>::Dequeue()
 	this->list = temp->next;
 	delete temp;
 	this->size--;
-}
-
-template<typename T>
-inline T Queue<T>::Peek() const
-{
-	if (this->IsEmpty()) throw std::exception("Queue underflow.");
-	return *(list->data);
-}
-
-template<typename T>
-inline unsigned int Queue<T>::GetSize() const
-{
-	return this->size;
-}
-
-template<typename T>
-inline bool Queue<T>::IsEmpty() const
-{
-	return (this->size == 0);
 }
