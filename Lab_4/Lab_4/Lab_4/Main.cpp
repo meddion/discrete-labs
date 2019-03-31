@@ -2,58 +2,6 @@
 #include <exception>
 #include "Stack.h"
 #include "Queue.h"
-/*typedef int datatype;
-unsigned int k = 0;
-
-struct Item 
-{
-	unsigned int id;
-	datatype data;
-	Item* next = nullptr;
-	Item* prev = nullptr;
-};
-
-Item* CreateItem(Item* prevItem = nullptr)
-{
-	Item* item = new Item;
-	item->next = nullptr;
-	item->id = k++;
-
-	if (prevItem != nullptr)
-		item->prev = prevItem;
-	else
-		item->prev = nullptr;
-
-	return item;
-}
-
-void AddNewItem(Item* item)
-{
-	item = item->next = CreateItem(item);
-}
-
-void SetData(Item* item, datatype data)
-{
-	item->data = data;
-}
-
-datatype GetData(Item* item)
-{
-	return item->data;
-}
-/*Item* item;
-
-	item = CreateItem();
-
-	std::cout << "Item #1: " << item << std::endl;
-	AddNewItem(item);
-	std::cout << "Item #2: " << item << std::endl;
-	AddNewItem(item);
-	std::cout << "Item #3: " << item << std::endl;
-
-	SetData(item, 255);
-	std::cout << item->data << std::endl;
-*/
 
 int main()
 {
