@@ -4,11 +4,11 @@ template <typename T>
 class AbstractData {
 protected:
 	struct Item;
+	struct Node;
 	unsigned int size;
-	Item* list;
 public:
-	T Peek() const;
-	void Show() const;
+	AbstractData();
+	virtual void Show() const = 0;
 	unsigned int GetSize() const;
 	bool IsEmpty() const;
 };
@@ -25,6 +25,26 @@ struct AbstractData<T>::Item
 };
 
 template<typename T>
+struct AbstractData<T>::Node
+{
+	unsigned int id;
+	T* data;
+	Node* next = nullptr;
+	Node* prev = nullptr;
+	~Node()
+	{
+		delete data;
+	}
+};
+
+template<typename T>
+AbstractData<T>::AbstractData()
+{
+	this->size = 0;
+}
+
+
+template<typename T>
 inline unsigned int AbstractData<T>::GetSize() const
 {
 	return this->size;
@@ -34,22 +54,4 @@ template<typename T>
 inline bool AbstractData<T>::IsEmpty() const
 {
 	return (this->size == 0);
-}
-
-template<typename T>
-T AbstractData<T>::Peek() const
-{
-	if (!this->size) throw std::exception("Stack underflow.");
-	return *(this->list->data);
-}
-
-template<typename T>
-void AbstractData<T>::Show() const
-{
-	Item* temp = this->list;
-	unsigned int k = 0;
-	while (temp != nullptr) {
-		std::cout << ++k << ". " << *(temp->data) << std::endl;
-		temp = temp->next;
-	}
 }

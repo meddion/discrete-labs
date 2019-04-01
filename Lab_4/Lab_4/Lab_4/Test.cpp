@@ -1,8 +1,9 @@
+/* This file was only created for test porposes*/
 #include <iostream>
 #include <exception>
 #include "Stack.h"
 #include "Queue.h"
-
+#include "Deque.h"
 
 int main()
 {
@@ -16,7 +17,7 @@ int main()
 		std::cout << stack->Peek() << std::endl;
 		delete stack;*/
 
-		Queue<int>* queue = new Queue<int>;
+		/*Queue<int>* queue = new Queue<int>;
 		queue->Enqueue(1);
 		queue->Enqueue(2);
 		queue->Enqueue(3);
@@ -24,8 +25,17 @@ int main()
 		queue->Dequeue();
 		std::cout << queue->Peek() << std::endl;
 		queue->Show();
-		delete queue;
-
+		delete queue;*/
+		
+		/*Deque<int>* deque = new Deque<int>;
+		deque->AddToHead(1);
+		deque->AddToHead(2);
+		deque->AddToHead(3);
+		deque->AddAfter(255, 0);
+		deque->DelElementById(1);
+		deque->Show();
+		delete deque;*/
+		
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}

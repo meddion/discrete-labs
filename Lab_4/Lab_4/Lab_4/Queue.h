@@ -6,19 +6,22 @@
 template <typename T>
 class Queue : public AbstractData<T>
 {
-public:
+private:
 	typedef AbstractData<T>::Item Item;
+	Item* list;
+public:
 	Queue();
 	~Queue();
 	void Enqueue(T data);
 	void Dequeue();
+	T Peek() const;
+	virtual void Show() const;
 };
 
 template<typename T>
-Queue<T>::Queue()
+Queue<T>::Queue() : AbstractData<T>::AbstractData()
 {
 	this->list = nullptr;
-	this->size = 0;
 }
 
 template<typename T>
@@ -53,4 +56,22 @@ void Queue<T>::Dequeue()
 	this->list = temp->next;
 	delete temp;
 	this->size--;
+}
+
+template<typename T>
+T Queue<T>::Peek() const
+{
+	if (!this->size) throw std::exception("Stack underflow.");
+	return *(this->list->data);
+}
+
+template<typename T>
+void Queue<T>::Show() const
+{
+	Item* temp = this->list;
+	unsigned int k = 0;
+	while (temp != nullptr) {
+		std::cout << ++k << ". " << *(temp->data) << std::endl;
+		temp = temp->next;
+	}
 }
