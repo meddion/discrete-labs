@@ -12,7 +12,7 @@ private:
 public:
 	Queue();
 	~Queue();
-	void Enqueue(T data);
+	void Enqueue(const T& data);
 	void Dequeue();
 	T Peek() const;
 	virtual void Show() const;
@@ -32,10 +32,10 @@ Queue<T>::~Queue()
 }
 
 template<typename T>
-void Queue<T>::Enqueue(T data)
+void Queue<T>::Enqueue(const T& data)
 {
 	Item* temp = new Item;
-	temp->data = new T(data);
+	temp->data = data;
 
 	if (this->list != nullptr) {
 		Item* temp2 = this->list;
@@ -62,7 +62,7 @@ template<typename T>
 T Queue<T>::Peek() const
 {
 	if (!this->size) throw std::exception("Stack underflow.");
-	return *(this->list->data);
+	return this->list->data;
 }
 
 template<typename T>
@@ -71,7 +71,7 @@ void Queue<T>::Show() const
 	Item* temp = this->list;
 	unsigned int k = 0;
 	while (temp != nullptr) {
-		std::cout << ++k << ". " << *(temp->data) << std::endl;
+		std::cout << ++k << ". " << temp->data << std::endl;
 		temp = temp->next;
 	}
 }

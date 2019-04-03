@@ -16,25 +16,17 @@ public:
 template<typename T>
 struct AbstractData<T>::Item
 {
-	T* data;
+	T data;
 	Item* next = nullptr;
-	~Item()
-	{
-		delete data;
-	}
 };
 
 template<typename T>
 struct AbstractData<T>::Node
 {
 	unsigned int id;
-	T* data;
+	T data;
 	Node* next = nullptr;
 	Node* prev = nullptr;
-	~Node()
-	{
-		delete data;
-	}
 };
 
 template<typename T>

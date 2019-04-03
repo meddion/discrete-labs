@@ -12,7 +12,7 @@ private:
 public:
 	Stack();
 	~Stack();
-	void Push(T data);
+	void Push(const T& data);
 	void Pop();
 	T Peek() const;
 	virtual void Show() const;
@@ -32,10 +32,10 @@ Stack<T>::~Stack()
 }
 
 template<typename T>
-void Stack<T>::Push(T data)
+void Stack<T>::Push(const T& data)
 {
 	Item* temp = new Item;
-	temp->data = new T(data);
+	temp->data = data;
 	temp->next = this->list;
 	this->list = temp;
 	this->size++;
@@ -55,7 +55,7 @@ template<typename T>
 T Stack<T>::Peek() const
 {
 	if (!this->size) throw std::exception("Stack underflow.");
-	return *(this->list->data);
+	return this->list->data;
 }
 
 template<typename T>
@@ -64,7 +64,7 @@ void Stack<T>::Show() const
 	Item* temp = this->list;
 	unsigned int k = 0;
 	while (temp != nullptr) {
-		std::cout << ++k << ". " << *(temp->data) << std::endl;
+		std::cout << ++k << ". " << temp->data << std::endl;
 		temp = temp->next;
 	}
 }

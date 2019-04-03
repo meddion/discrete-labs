@@ -8,16 +8,16 @@ private:
 	unsigned int id;
 	typedef AbstractData<T>::Node Node;
 	Node *tail, *head;
-	Node* CreateNode(T data);
+	Node* CreateNode(const T& data);
 public:
 	Deque();
 	~Deque();
-	void AddToTail(T data);
-	void AddToHead(T data);
+	void AddToTail(const T& data);
+	void AddToHead(const T& data);
 	void DelFromTail();
 	void DelFromHead();
 	Node* Search(unsigned int id);
-	void AddAfter(T data, unsigned int id);
+	void AddAfter(const T& data, unsigned int id);
 	void DelElementById(unsigned int id);
 	virtual void Show() const;
 };
@@ -37,16 +37,16 @@ Deque<T>::~Deque()
 }
 
 template<typename T>
-typename Deque<T>::Node* Deque<T>::CreateNode(T data)
+typename Deque<T>::Node* Deque<T>::CreateNode(const T& data)
 {
 	Node* node = new Node;
-	node->data = new T(data);
+	node->data = data;
 	node->id = this->id++;
 	return node;
 }
 
 template<typename T>
-void Deque<T>::AddToTail(T data)
+void Deque<T>::AddToTail(const T& data)
 {
 	Node* temp = CreateNode(data);
 
@@ -61,7 +61,7 @@ void Deque<T>::AddToTail(T data)
 }
 
 template<typename T>
-void Deque<T>::AddToHead(T data)
+void Deque<T>::AddToHead(const T& data)
 {
 	Node* temp = CreateNode(data);
 
@@ -115,7 +115,7 @@ typename Deque<T>::Node* Deque<T>::Search(unsigned int id)
 }
 
 template<typename T> 
-void Deque<T>::AddAfter(T data, unsigned int id)
+void Deque<T>::AddAfter(const T& data, unsigned int id)
 {
 	Node* founded = this->Search(id);
 	if (founded == nullptr) throw std::exception("There's no such element in the deque.");
@@ -149,7 +149,7 @@ inline void Deque<T>::Show() const
 	Node* temp = this->tail;
 	unsigned int k = 0;
 	while (temp != nullptr) {
-		std::cout << ++k << ". " << *(temp->data) << std::endl;
+		std::cout << ++k << ". " << temp->data << std::endl;
 		temp = temp->next;
 	}
 }

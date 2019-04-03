@@ -15,6 +15,7 @@ int main()
 		stack->Push(4);
 		stack->Pop();
 		std::cout << stack->Peek() << std::endl;
+		stack->Show();
 		delete stack;*/
 
 		/*Queue<int>* queue = new Queue<int>;
@@ -28,10 +29,11 @@ int main()
 		delete queue;*/
 		
 		/*Deque<int>* deque = new Deque<int>;
+		int a = 1;
 		deque->AddToHead(1);
 		deque->AddToHead(2);
 		deque->AddToHead(3);
-		deque->AddAfter(255, 0);
+		deque->AddAfter(5, 0);
 		deque->DelElementById(1);
 		deque->Show();
 		delete deque;*/
