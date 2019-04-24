@@ -1,0 +1,130 @@
+/*Main css*/
+*,*:before,*:after {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+html, body, button, input, select, textarea, div, nav {
+    font-family: 'Roboto', sans-serif;
+    line-height: 135%;
+    font-weight: normal;
+    color: #333;
+    font-size: 19px;
+}
+
+body {
+    height: 100%;
+    font-size: 1em;
+    background: #596e79;
+    overflow: auto;
+    word-wrap: break-word;
+    color: #fafafa;
+}
+
+a, a:visited {
+    text-decoration:none;
+    cursor: pointer;
+    color: #fafafa;
+}
+
+a:hover {
+    color: #6298ff;
+    transition: .2s ease-in;
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+div.wrapper {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1180px;
+    min-height: 100%;
+    position: relative;
+    z-index: 1;
+    border-radius: 0;
+    background: none;
+}
+
+div.main {
+    display: block;
+    padding: 10px 5px;
+    max-width: 700px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background: #fafafa;
+    margin: 150px auto;
+    border: 2px;
+    border-radius: 3px;
+}
+
+div.main ul li {
+    margin-top: 15px;
+}
+
+div.main .title {
+    font-weight: bold;
+    font-size: 21px;
+    padding-bottom: 10px;
+}
+
+div.main input, button {
+    border-radius: 2px;
+}
+
+div.main input[type=text] {
+    border: 0;
+    border-radius: 0;
+    padding: 0 3px;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+    background: inherit;
+    margin-right: 2px;
+    color: inherit;
+}
+
+div.main button[type=submit] {
+    border: 0;
+    height: 30px;
+    width: 70px;
+    text-align: center;
+}
+div.main button[type=submit]:hover {
+    background: silver;
+}
+
+div.main .result, div.main .input, div.main .error {
+    padding: 2px;
+    outline: 5px solid;
+    margin-top: 10px;
+    color: #fafafa;
+}
+
+div.main .result {
+    background: #929aab;
+    outline-color: #929aab;
+    text-align: center;
+}
+
+div.main .input {
+    color: #fafafa;
+    background: #305f72;
+    outline-color: #305f72;
+}
+
+div.main .error {
+    color: #fafafa;
+    background: darkgray;
+    outline-color: darkgray;
+}
