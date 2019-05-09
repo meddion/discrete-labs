@@ -15,6 +15,7 @@ int main()
 	graph.addVertex('E');
 	// connect nodes
 	graph.connectVertex('N', 'A');
+	graph.connectVertex('A', 'N');
 	graph.connectVertex('A', 'B');
 	graph.connectVertex('B', 'C');
 	graph.connectVertex('C', 'F');
